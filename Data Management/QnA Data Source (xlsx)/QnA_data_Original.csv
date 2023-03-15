@@ -1,8 +1,18 @@
-﻿Source.Name;Column1;Column2;Column3
+﻿Source.Name;Id;Questions;Answers
 QnA_data_0.csv;0;  what is 1 x 1?; The answer is 1.
 QnA_data_1.csv;1;  what is 1 x 2?; The answer is 2.
 QnA_data_10.csv;10;  who is kay mudai?; I do not know but i think you mean kay mudau? am i right or wrong?
+QnA_data_11.csv;11;  why do women cheat; for various reasons
+QnA_data_12.csv;12;  what is 7 x 7?; The answer is 49.
+QnA_data_13.csv;13;  exit; Goodbye user!!
+QnA_data_14.csv;14;  what is 1 x 6?; The answer is 6.
+QnA_data_15.csv;15;  exit; See you later!
+QnA_data_16.csv;16;  what us 1 x 4?;" You mean ""is"". The answer is 4."
+QnA_data_17.csv;17;  exit; Cool bye!
+QnA_data_18.csv;18;  what is 1 x 7?; The answer is 7.
+QnA_data_19.csv;19;  exit; Bye Bye!
 QnA_data_2.csv;2;  what is 1 x 3?; The answer is 3.
+QnA_data_20.csv;20;  exit; Okay see you soon!
 QnA_data_3.csv;3;  what is 1 x 4?; The answer is 4.
 QnA_data_4.csv;4;  what is 1 x 5?; The answer is 5.
 QnA_data_5.csv;5;  who is kay mudau?; Kay Mudau is one of the greatest Computer Scientist in history. He is well known for creating me and he is from South Africa
