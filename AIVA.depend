@@ -1,0 +1,47 @@
+# depslib dependency file v1.0
+1662549911 source:c:\users\kkaym\onedrive\desktop\codeblocks projects\aiva\assistant.cpp
+	<iostream>
+	"assistant.h"
+	<stdio.h>
+	<string.h>
+	<cstdlib>
+	<fstream>
+	<stdlib.h>
+
+1662549858 c:\users\kkaym\onedrive\desktop\codeblocks projects\aiva\assistant.h
+	<iostream>
+	<fstream>
+	<cstdlib>
+	<iomanip>
+	<stdio.h>
+	<cstring>
+	<unistd.h>
+	<ctype.h>
+	<ctime>
+	<process.h>
+	<windows.h>
+
+1662549779 source:c:\users\kkaym\onedrive\desktop\codeblocks projects\aiva\main.cpp
+	<iostream>
+	<stdio.h>
+	<string.h>
+	<cstdlib>
+	<fstream>
+	<stdlib.h>
+	"assistant.h"
+
+1677270704 source:c:\users\kkaym\onedrive\desktop\codeblocks projects\aiva pro\assistant.cpp
+	"assistant.h"
+
+1677270714 c:\users\kkaym\onedrive\desktop\codeblocks projects\aiva pro\assistant.h
+	<iostream>
+	<vector>
+	<sstream>
+	<string.h>
+	<fstream>
+	<iomanip>
+	<windows.h>
+
+1677352013 source:c:\users\kkaym\onedrive\desktop\codeblocks projects\aiva pro\main.cpp
+	"assistant.h"
+
