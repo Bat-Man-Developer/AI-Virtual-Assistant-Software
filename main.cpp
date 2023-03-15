@@ -771,6 +771,8 @@ public:
     }
     void ask()
     {
+    do
+    {
         filename = "C:/Users/kkaym/OneDrive/Desktop/Codeblocks Projects/AIVA pro/Data Management/QnA Data Pool (xlsx)/QnA_data_";
         cout<<"\n"<<endl;
         cout<<" --SOUTH AFRICAN GOVERNMENT PERSONAL ARTIFICIAL INTELLIGENCE VIRTUAL ASSISTANT:::"<<endl;
@@ -802,7 +804,6 @@ public:
         cout<<"\n\n"<<endl;
         logic = 0;
         i = 0;
-
         fstream file("C:/Users/kkaym/OneDrive/Desktop/Codeblocks Projects/AIVA pro/Data Management/QnA Data Source (xlsx)/QnA_data_Original.csv", ios::in);
         if(file.is_open())
         {
@@ -918,6 +919,7 @@ public:
         cout<<"\n"<<endl;
         system("PAUSE");
         system("CLS");
+    }while(text_question != " exit");
     }
     void error_message()
     {
