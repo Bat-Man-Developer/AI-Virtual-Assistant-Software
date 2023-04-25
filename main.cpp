@@ -1,57 +1,21 @@
 #include "assistant.h"
 using namespace std;
 assistant a; //create object for assistance header to call functions
-class app{
+class aiva_safe_city_identifier{
 private:
-    FILE *fc, *fk, *fl;//create file object
-    int counter_t = 0, logic, logic1, temp = 0, i, x;
-    string city, text_question, temp_text_question, text_answer, f_word, str, text_username, text_password, line, word, temp_str, response, xlsx = ".csv", filename;
-    vector<vector<string>> content;
-    vector<string> row;
-    struct users
-    {
-        string username, password;
-    };
-    struct users rec[1000];
-    struct knowledge
-    {
-        string questions, answers, *ptr_q1, *ptr_a1;
-    };
-    struct knowledge obj1[999];
+    FILE *fc;//create file object
+    int counter_t = 0, temp;
+    string city;
     struct unsafe_citys
     {
-        int counter = 0, j = 0, joburg_c = 0, capetown_c = 0, durban_c = 0, pretoria_c = 0, bloemfontein_c = 0, gqeberha_c = 0, eastlondon_c = 0, vereeniging_c = 0, pietermaritzburg_c = 0, polokwane_c = 0, kimberley_c = 0, soweto_c = 0, mbombela_c = 0, welkom_c = 0, benoni_c = 0, carletonville_c = 0, makhanda_c = 0, upington_c = 0, klerksdorp_c = 0, potchefstroom_c = 0, newcastle_c = 0, mosselbay_c = 0, mahikeng_c = 0, thohoyandou_c = 0, volksrust_c = 0, oudtshoorn_c = 0, warrenton_c = 0, mthatha_c = 0, brits_c = 0, kroonstad_c = 0, ulundi_c = 0, aliwalnorth_c = 0, barklywest_c = 0, tembisa_c = 0, alberton_c = 0, bethal_c = 0, vryburg_c = 0, vanderbijlpark_c = 0, bisho_c = 0, rustenburg_c = 0, qonce_c = 0, mokopane_c = 0, balfour_c = 0, louistrichardt_c = 0, theunissen_c = 0, kwadukuza_c = 0, ladybrand_c = 0, sasolburg_c = 0,jankempdorp_c = 0, brakpan_c = 0, stutterheim_c = 0, saftey1 = 0, saftey2 = 0, saftey3 = 0, saftey4 = 0, saftey5 = 0, saftey6 = 0, saftey7 = 0, saftey8 = 0, saftey9 = 0, saftey10 = 0, saftey11 = 0, saftey12 = 0, saftey13 = 0, saftey14 = 0, saftey15 = 0, saftey16 = 0, saftey17 = 0, saftey18 = 0, saftey19 = 0, saftey20 = 0, saftey21 = 0, saftey22 = 0, saftey23 = 0, saftey24 = 0, saftey25 = 0, saftey26 = 0, saftey27 = 0, saftey28 = 0, saftey29 = 0, saftey30 = 0, saftey31 = 0, saftey32 = 0, saftey33 = 0, saftey34 = 0, saftey35 = 0, saftey36 = 0, saftey37 = 0, saftey38 = 0, saftey39 = 0, saftey40 = 0, saftey41 = 0, saftey42 = 0, saftey43 = 0, saftey44 = 0, saftey45 = 0, saftey46 = 0, saftey47 = 0, saftey48 = 0, saftey49 = 0, saftey50 = 0, saftey51 = 0;
+        int joburg_c = 0, capetown_c = 0, durban_c = 0, pretoria_c = 0, bloemfontein_c = 0, gqeberha_c = 0, eastlondon_c = 0, vereeniging_c = 0, pietermaritzburg_c = 0, polokwane_c = 0, kimberley_c = 0, soweto_c = 0, mbombela_c = 0, welkom_c = 0, benoni_c = 0, carletonville_c = 0, makhanda_c = 0, upington_c = 0, klerksdorp_c = 0, potchefstroom_c = 0, newcastle_c = 0, mosselbay_c = 0, mahikeng_c = 0, thohoyandou_c = 0, volksrust_c = 0, oudtshoorn_c = 0, warrenton_c = 0, mthatha_c = 0, brits_c = 0, kroonstad_c = 0, ulundi_c = 0, aliwalnorth_c = 0, barklywest_c = 0, tembisa_c = 0, alberton_c = 0, bethal_c = 0, vryburg_c = 0, vanderbijlpark_c = 0, bisho_c = 0, rustenburg_c = 0, qonce_c = 0, mokopane_c = 0, balfour_c = 0, louistrichardt_c = 0, theunissen_c = 0, kwadukuza_c = 0, ladybrand_c = 0, sasolburg_c = 0,jankempdorp_c = 0, brakpan_c = 0, stutterheim_c = 0, saftey1 = 0, saftey2 = 0, saftey3 = 0, saftey4 = 0, saftey5 = 0, saftey6 = 0, saftey7 = 0, saftey8 = 0, saftey9 = 0, saftey10 = 0, saftey11 = 0, saftey12 = 0, saftey13 = 0, saftey14 = 0, saftey15 = 0, saftey16 = 0, saftey17 = 0, saftey18 = 0, saftey19 = 0, saftey20 = 0, saftey21 = 0, saftey22 = 0, saftey23 = 0, saftey24 = 0, saftey25 = 0, saftey26 = 0, saftey27 = 0, saftey28 = 0, saftey29 = 0, saftey30 = 0, saftey31 = 0, saftey32 = 0, saftey33 = 0, saftey34 = 0, saftey35 = 0, saftey36 = 0, saftey37 = 0, saftey38 = 0, saftey39 = 0, saftey40 = 0, saftey41 = 0, saftey42 = 0, saftey43 = 0, saftey44 = 0, saftey45 = 0, saftey46 = 0, saftey47 = 0, saftey48 = 0, saftey49 = 0, saftey50 = 0, saftey51 = 0;
     };
     struct unsafe_citys obj;
 protected:
 public:
-    app()//Constructor
+    aiva_safe_city_identifier()//Constructor
     {
-        rec[0].username = "KKAY.MUDAU";
-        rec[0].password = "OHLord.01";
-        cout<<"\n\n\n"<<endl;
-        system("color f");
-        cout<<"\t\t\t <<<<<<<<<<<<<<<<             WELCOME   TO   BLACKKARMAHOLYSPIRIT   Inc.              >>>>>>>>>>>>>>>\n\n"<<endl;
-        Sleep(3000);
-        /*do
-        {
-            system("CLS");
-            system("color e");//color font
-            cout<<"\n\n\n\n"<<endl;
-            cout<<"\t\t\t\t\t\t\t <<<<<< --LOGIN DETAILS-- >>>>>>"<<endl;
-            cout<<"\n\t\t\t\t\t\t ENTER USERNAME: ";
-            cin>>text_username;
-            cout<<endl;
-            cout<<"\n\t\t\t\t\t\t ENTER PASSWORD: ";
-            cin>>text_password;
-            cout<<endl;
-            for(int i=0; i<1000; i++)
-            {
-                if(text_username == rec[i].username && text_password == rec[i].password)
-                    break;
-            }
-        }while(text_username != rec[i].username && text_password != rec[i].password );*/
-        system("CLS");
+
     }
     void survey()
     {
@@ -301,42 +265,6 @@ public:
             return;
         }
         cout<<"\n\n"<<endl;
-        system("PAUSE");
-        system("CLS");
-    }
-    void online_search()//online search
-    {
-        string query;
-        cout<<endl;
-        cout<<" --SOUTH AFRICAN GOVERNMENT PERSONAL ARTIFICIAL INTELLIGENCE VIRTUAL ASSISTANT:::"<<endl;
-        cout<<endl;
-        cout<<" --WEB BROWSER:::"<<endl;
-        cout<<endl;
-        a.type_n_speak_func("SEARCH ANYTHING ONLINE::");
-        cout<<"\n\n\n"<<endl;
-        a.type_n_speak_func("                           Type Your Search Here.");
-        cout<<"\n"<<endl;
-        cout<<" SEARCH HERE----------->"<<endl;
-        cout<<endl;
-        cin>>f_word;
-        getline(cin, query);
-        query = f_word + query;
-        for (i = 0; query[i] != '\0'; i++)
-        {
-            if (query[i] == ' ')
-            query[i] = '+';
-        }
-        Sleep(200);
-        system("cls");
-        system("ipconfig");//call function for showing ip configurations
-        cout<<endl;
-        a.type_n_speak_func("All protocols are secured...");
-        a.speak_func("Connecting to your browser.");
-        string url;
-        url = "start https://www.google.com/search?q=";//store google search adress in url string
-        url += query;//add search query at the end of url ink to search automatically
-        system(string(url).c_str());//call windows function for accessing windows applications by passing string as reference
-        cout<<"\n\n\n"<<endl;
         system("PAUSE");
         system("CLS");
     }
@@ -769,42 +697,243 @@ public:
         }while(temp != 0);
         fflush(stdin);
     }
-    void ask()
+    ~aiva_safe_city_identifier()
     {
-    do
+        cout<<""<<endl;
+    }
+};
+class aiva_online_search{
+private:
+    string f_word;
+public:
+    aiva_online_search()
     {
-        filename = "C:/Users/kkaym/OneDrive/Desktop/Codeblocks Projects/AIVA pro/Data Management/QnA Data Pool (xlsx)/QnA_data_";
-        cout<<"\n"<<endl;
+
+    }
+    void online_search()//online search
+    {
+        string query;
+        cout<<endl;
         cout<<" --SOUTH AFRICAN GOVERNMENT PERSONAL ARTIFICIAL INTELLIGENCE VIRTUAL ASSISTANT:::"<<endl;
         cout<<endl;
-        fl=fopen("C:/Users/kkaym/OneDrive/Desktop/Codeblocks Projects/AIVA pro/Data Management/QnA Data Logic (txt)/logic_data.txt", "rb");//Open and read File
-        if(fl)
+        cout<<" --WEB BROWSER:::"<<endl;
+        cout<<endl;
+        a.type_n_speak_func("SEARCH ANYTHING ONLINE::");
+        cout<<"\n\n\n"<<endl;
+        a.type_n_speak_func("                           Type Your Search Here.");
+        cout<<"\n"<<endl;
+        cout<<" SEARCH HERE----------->"<<endl;
+        cout<<endl;
+        cin>>f_word;
+        getline(cin, query);
+        query = f_word + query;
+        for (int i = 0; query[i] != '\0'; i++)
         {
-            while(fread(&obj, sizeof(obj), 1, fl))
+            if (query[i] == ' ')
+            query[i] = '+';
+        }
+        Sleep(200);
+        system("cls");
+        system("ipconfig");//call function for showing ip configurations
+        cout<<endl;
+        a.type_n_speak_func("All protocols are secured...");
+        a.speak_func("Connecting to your browser.");
+        string url;
+        url = "start https://www.google.com/search?q=";//store google search adress in url string
+        url += query;//add search query at the end of url ink to search automatically
+        system(string(url).c_str());//call windows function for accessing windows applications by passing string as reference
+        cout<<"\n\n\n"<<endl;
+        system("PAUSE");
+        system("CLS");
+    }
+    ~aiva_online_search()
+    {
+
+    }
+};
+class aiva_questions{
+private:
+    FILE *fl;//create file object
+    int p;
+    string str, line, word, temp_str, filename1 = "C:/Users/kkaym/OneDrive/Desktop/Codeblocks Projects/AIVA pro/Data Management/QnA Data Source (csv)/Questions_data_Original.csv", filename2 = "C:/Users/kkaym/OneDrive/Desktop/Codeblocks Projects/AIVA pro/Data Management/QnA Data Source (csv)/Answers_data_Original.csv";
+protected:
+
+public:
+    struct knowledge
+    {
+        string questions, questions_compare;
+    };
+    struct knowledge obj_knowledge[999];
+    aiva_questions()
+    {
+
+    }
+    void copiedQuestions(string text_question, vector<vector<string>> content, vector<string> row, int temp)
+    {
+        //Store Current Question Input
+        fstream file1("C:/Users/kkaym/OneDrive/Desktop/Codeblocks Projects/AIVA pro/Data Management/QnA Data Source (csv)/Questions_data_Original.csv", ios::in);
+        if(file1.is_open())
+        {
+            while(getline(file1, line))
             {
-                system("CLS");
-                cout<<" --KNOW it ALL DEEP LEARNING SERVICE                                       Total Questions in Database: "<<obj.counter<<endl;
+                row.clear();
+                stringstream str(line);
+                while(getline(str, word, ','))
+                    row.push_back(word);
+
+                content.push_back(row);
             }
-            fclose(fl);//Close File
         }
         else
         {
-            error_message();
+            system("color 6");
+            cout<<"\n\n\n\t\t\t<<<<<<<<<<<<<<            ...Accessing   Data   Files...             >>>>>>>>>>>>>>>\n";
+            Sleep(2000);
+            system("CLS");
+            file1.close();
         }
         cout<<endl;
-        a.type_n_speak_func("ASK ME ANYTHING, YOU WANT TO KNOW? Start by typing aiva first.");
-        cout<<"\n"<<endl;
-        cout<<"                                 Start by typing aiva first."<<endl;
-        cout<<"\n"<<endl;
-        cout<<"  ____________________________________________________________________________________________________________"<<endl;
-        cout<<"     ";
-        cin>>text_question;
-        getline(cin, text_question);
-        cout<<"  _____________________________________________________________________________________________________________"<<endl;
-        cout<<"\n\n"<<endl;
-        logic = 0;
-        i = 0;
-        fstream file("C:/Users/kkaym/OneDrive/Desktop/Codeblocks Projects/AIVA pro/Data Management/QnA Data Source (xlsx)/QnA_data_Original.csv", ios::in);
+        p = 0;
+        for(int i = 0; i < temp; i++)
+        {
+            obj_knowledge[p].questions_compare = content[i][0];
+            cout<<obj_knowledge[p].questions_compare;
+            cout<<"\n\n copied question input " <<p<< " in struct record question compare \n\n"<<endl;
+            p++;
+        }
+        obj_knowledge[p].questions_compare = text_question;
+        cout<<obj_knowledge[p].questions_compare;
+        cout<<"\n\n copied question input " <<p<< " in struct record question compare \n\n"<<endl;
+        content.clear();
+        file1.close();
+        remove("C:/Users/kkaym/OneDrive/Desktop/Codeblocks Projects/AIVA pro/Data Management/QnA Data Source (csv)/Questions_data_Original.csv");
+    }
+    void storedQuestions(string text_question, int temp)
+    {
+        //Questions input Excel file
+        ofstream myExcelFile1;
+        myExcelFile1.open(filename1);//open and write csv data file
+        for(int i=0; i < temp; i++)
+        {
+            myExcelFile1 << obj_knowledge[i].questions_compare <<endl;// Send data to the stream
+        }
+        myExcelFile1 << text_question <<endl;// Send data to the stream
+        myExcelFile1.close();// Close the file
+        cout<<"\n\n Struct record question inputs stored succesfully. "<<endl;
+    }
+    void storedCurrentQuestion(string text_question)
+    {
+        //Questions input Excel file
+        ofstream myExcelFile1;
+        myExcelFile1.open(filename1);//open and write csv data file
+        myExcelFile1 << text_question <<endl;// Send data to the stream
+        myExcelFile1.close();// Close the file
+        cout<<"\n\n New struct record question inputs stored succesfully. "<<endl;
+    }
+    ~aiva_questions()
+    {
+
+    }
+};
+class aiva_answers{
+private:
+    FILE *fl;//create file object
+    int p;
+    string str, line, word, temp_str, response, filename2 = "C:/Users/kkaym/OneDrive/Desktop/Codeblocks Projects/AIVA pro/Data Management/QnA Data Source (csv)/Answers_data_Original.csv";
+protected:
+public:
+    struct knowledge
+    {
+        string answers, answers_compare;
+    };
+    struct knowledge obj_knowledge[999];
+    aiva_answers()
+    {
+
+    }
+    void copiedAnswers(string text_answer, vector<vector<string>> content, vector<string> row, int temp)
+    {
+        //Store Current Answer Input
+        fstream file2("C:/Users/kkaym/OneDrive/Desktop/Codeblocks Projects/AIVA pro/Data Management/QnA Data Source (csv)/Answers_data_Original.csv", ios::in);
+        if(file2.is_open())
+        {
+            while(getline(file2, line))
+            {
+                row.clear();
+                stringstream str(line);
+                while(getline(str, word, ','))
+                    row.push_back(word);
+
+                content.push_back(row);
+            }
+        }
+        else
+        {
+            system("color 6");
+            cout<<"\n\n\n\t\t\t<<<<<<<<<<<<<<            ...Accessing   Data   Files...             >>>>>>>>>>>>>>>\n";
+            Sleep(2000);
+            system("CLS");
+            file2.close();
+        }
+        cout<<endl;
+        p = 0;
+        for(int i = 0; i < temp; i++)
+        {
+            obj_knowledge[p].answers_compare = content[i][0];
+            cout<<obj_knowledge[p].answers_compare;
+            cout<<"\n\n copied answer input " <<p<< " in struct record answer compare \n\n"<<endl;
+            p++;
+        }
+        obj_knowledge[p].answers_compare = text_answer;
+        cout<<obj_knowledge[p].answers_compare;
+        cout<<"\n\n copied answer input " <<p<< " in struct record answer compare \n\n"<<endl;
+        content.clear();
+        file2.close();
+        remove("C:/Users/kkaym/OneDrive/Desktop/Codeblocks Projects/AIVA pro/Data Management/QnA Data Source (csv)/Answers_data_Original.csv");
+    }
+    void storedAnswers(string text_answer, int temp)
+    {
+        //Answers input Excel file
+        ofstream myExcelFile2;
+        myExcelFile2.open(filename2);//open and write csv data file
+        for(int i=0; i<temp; i++)
+        {
+            myExcelFile2 << obj_knowledge[i].answers_compare <<endl;// Send data to the stream
+        }
+        myExcelFile2 << text_answer <<endl;// Send data to the stream
+        myExcelFile2.close();// Close the file
+        cout<<"\n\n Struct record answer inputs stored succesfully. "<<endl;
+    }
+    void storedCurrentAnswer(string text_answer)
+    {
+        //Answers input Excel file
+        ofstream myExcelFile2;
+        myExcelFile2.open(filename2);//open and write csv data file
+        myExcelFile2 << text_answer <<endl;// Send data to the stream
+        myExcelFile2.close();// Close the file
+        cout<<"\n\n New struct record answer inputs stored succesfully. "<<endl;
+    }
+    ~aiva_answers()
+    {
+
+    }
+};
+class aiva_QnA{
+private:
+    FILE *fl;//create file object
+    int logic1 = 0, p, x, m;
+    string a_compare, q_compare, a_store, q_store, str, line, word, temp_str_QnA, temp_str_q, temp_str_a, response, filename = "C:/Users/kkaym/OneDrive/Desktop/Codeblocks Projects/AIVA pro/Data Management/QnA Data Source (csv)/QnA_data_Original.csv";
+    aiva_questions obj_questions;
+    aiva_answers obj_answers;
+protected:
+public:
+    aiva_QnA()
+    {
+    }
+    void copiedQnA(vector<vector<string>> content, vector<string> row, int temp)
+    {
+        //Store Current Questions & Answers
+        fstream file("C:/Users/kkaym/OneDrive/Desktop/Codeblocks Projects/AIVA pro/Data Management/QnA Data Source (csv)/QnA_data_Original.csv", ios::in);
         if(file.is_open())
         {
             while(getline(file, line))
@@ -825,57 +954,222 @@ public:
             system("CLS");
             file.close();
         }
-
         cout<<endl;
-
-        for(unsigned int i = 1; i < content.size(); i++)
+        p = 0;
+        for(int i = 0; i < temp; i++)
         {
-            for(unsigned int j = 0; j < content[i].size(); j++)
+            unsigned int t = -1;
+            x = m = 0;
+            temp_str_QnA = content[i][1] + ", " + content[i][2];
+            temp_str_q = content[i][1];
+            for(unsigned int k=1; k<temp_str_QnA.length()+2; k++)
             {
-                temp_str = content[i][j];
-                for(unsigned int k = 0; k < temp_str.length(); k++)
+                if(k == 1)
                 {
-                    if(text_question[x] == temp_str[k])
+                    for(unsigned int v=1; v<temp_str_q.length(); v++)
                     {
-                        temp_text_question = temp_text_question + temp_str[k];
-                        x++;
+                        q_compare = q_compare + temp_str_q[v];
                     }
-                    if(temp_str[k] == '?' && temp_text_question == text_question)
-                    {
-                        logic1 = 1;
-                    }
-                    if(temp_str[k] == '?' && logic1 == 1)
-                    {
-                        k = k + 2;
-                        for(unsigned int z = k; z < temp_str.length(); z++)
-                        {
-                            response = response + temp_str[z];
-                        }
-                        system("CLS");
-                        cout<<endl;
-                        cout<<"Processing Speech Answer..............\n"<<endl;
-                        a.type_n_speak_func(response);
-                        logic = 1;
-                        break;
-                    }
+                    cout<<"Questions: "<<q_compare<<endl;
                 }
-                temp_text_question = "";
-                response = "";
-                logic1 = 0;
-                x = 0;
-                if(logic == 1)
+                if(q_compare[x] == temp_str_QnA[k])
+                {
+                    q_store = q_store + temp_str_QnA[k];
+                    x++;
+                }
+                if(temp_str_q[k] == '?' && q_store == q_compare)
+                {
+                    k = k + 2;
+                    t = k;
+                    logic1 = 1;
+                    obj_questions.obj_knowledge[p].questions = q_store;
+                    cout<<q_store;
+                    cout<<"\n\n Struct record QnA  Question "<<p<<" copied succesfully. \n\n"<<endl;
+                }
+                if(k == t)
+                {
+                    temp_str_a = content[i][2];
+                    for(unsigned int v=1; v<temp_str_a.length(); v++)
+                    {
+                        a_compare = a_compare + temp_str_a[v];
+                    }
+                    cout<<"Answers: "<<a_compare<<"\n"<<endl;
+                }
+                if(a_compare[m] == temp_str_QnA[k] && logic1 == 1)
+                {
+                    a_store = a_store + temp_str_QnA[k];
+                    m++;
+                }
+                if(temp_str_QnA[k] == '.' && a_store == a_compare)
+                {
+                    obj_answers.obj_knowledge[p].answers = a_store;
+                    cout<<a_store;
+                    cout<<"\n\n Struct record QnA  Answer "<<p<<" copied succesfully. \n\n"<<endl;
                     break;
+                }
             }
-            cout<<"\n";
+            q_compare = a_compare = q_store = a_store = "";
+            logic1 = 0;
+            p++;
         }
-        if(logic == 0)
+        content.clear();
+        file.close();
+        remove("C:/Users/kkaym/OneDrive/Desktop/Codeblocks Projects/AIVA pro/Data Management/QnA Data Source (csv)/QnA_data_Original.csv");
+    }
+    void storedQnA(string text_question, string text_answer, int temp)
+    {
+        //Q n A Excel file
+        ofstream myExcelFile;
+        myExcelFile.open(filename);//open and write csv data file
+        //myExcelFile << "ID" << ", " << "QUESTIONS" << ", " << "ANSWERS" <<endl;// Send data to the stream
+        for(int i=0; i<temp; i++)
         {
+            myExcelFile << i << ", " << obj_questions.obj_knowledge[i].questions << ", " << obj_answers.obj_knowledge[i].answers <<endl;// Send data to the stream
+        }
+        myExcelFile << temp << ", " << text_question << ", " << text_answer <<endl;// Send data to the stream
+        myExcelFile.close();// Close the file
+        cout<<"\n\n Struct record QnA inputs stored succesfully. "<<endl;
+    }
+    void storedCurrentQnA(string text_question, string text_answer, int temp)
+    {
+        //Q n A Excel file
+        ofstream myExcelFile;
+        myExcelFile.open(filename);//open and write csv data file
+        myExcelFile << temp << ", " << text_question << ", " << text_answer <<endl;// Send data to the stream
+        myExcelFile.close();// Close the file
+        cout<<"\n\n New struct record QnA inputs stored succesfully. "<<endl;
+    }
+    ~aiva_QnA()
+    {
+    }
+};
+class aiva_response{
+private:
+    int logic = 0, logic1 = 0, x;
+    string temp_text_question, str, line, word, temp_str_r, temp_response, response;
+protected:
+public:
+    aiva_response()
+    {
+    }
+    int outputQnA(vector<vector<string>> content, vector<string> row, string text_question)
+    {
+        logic = logic1 = 0;
+        fstream file("C:/Users/kkaym/OneDrive/Desktop/Codeblocks Projects/AIVA pro/Data Management/QnA Data Source (csv)/QnA_data_Original.csv", ios::in);
+        if(file.is_open())
+        {
+            while(getline(file, line))
+            {
+                row.clear();
+                stringstream str(line);
+                while(getline(str, word, ','))
+                    row.push_back(word);
+
+                content.push_back(row);
+            }
+        }
+        else
+        {
+            system("color 6");
+            cout<<"\n\n\n\t\t\t<<<<<<<<<<<<<<            ...Accessing   Data   Files...             >>>>>>>>>>>>>>>\n";
+            Sleep(2000);
+            system("CLS");
+            content.clear();
+            file.close();
+        }
+        cout<<endl;
+        for(unsigned int i = 0; i < content.size(); i++)
+        {
+            temp_str_r = content[i][1] + content[i][2];
+            for(unsigned int k = 0; k < temp_str_r.length()+1; k++)
+            {
+                if(text_question[x] == temp_str_r[k])
+                {
+                    temp_text_question = temp_text_question + temp_str_r[k];
+                    x++;
+                }
+                if(text_question[x-1] == '?' && temp_text_question == text_question)
+                {
+                    logic1 = 1;
+                }
+                if(text_question[x-1] == '?' && logic1 == 1)
+                {
+                    k = k + 2;
+                    for(unsigned int z = k; z < temp_str_r.length(); z++)
+                    {
+                        temp_response = temp_response + temp_str_r[z];
+                    }
+                    for(unsigned int y = 0; y<temp_response.length(); y++)
+                    {
+                        if(temp_response[y] != '\0')
+                        {
+                            response = response + temp_response[y];
+                        }
+                    }
+                    system("CLS");
+                    cout<<endl;
+                    cout<<"Processing Speech Answer..............\n"<<endl;
+                    a.type_n_speak_func(response);
+                    logic = 1;
+                    cout<<"\n\n"<<endl;
+                    break;
+                }
+            }
+            temp_text_question = temp_response = response = "";
+            logic1 = x = 0;
+            if(logic == 1)
+            {
+                content.clear();
+                file.close();
+                return logic;
+            }
+        }
+        content.clear();
+        file.close();
+        return logic;
+        cout<<"\n";
+    }
+    ~aiva_response()
+    {
+    }
+};
+class aiva_ask_me_anything{
+private:
+    aiva_questions obj_questions;
+    aiva_answers obj_answers;
+    aiva_QnA obj_QnA;
+    aiva_response obj_response;
+    FILE *fk, *fl;//create file object
+    int logic = 0, temp = 0, p, x, m;
+    string f_word, text_question, temp_text_question, text_answer, str, line, word, temp_str, response;
+    struct logic
+    {
+        int counter = 0;
+    };
+    struct logic obj_logic;
+protected:
+public:
+    vector<vector<string>> content;
+    vector<string> row;
+    aiva_ask_me_anything()
+    {
+
+    }
+    void ask()
+    {
+        do
+        {
+            cout<<"\n"<<endl;
+            cout<<" --SOUTH AFRICAN GOVERNMENT PERSONAL ARTIFICIAL INTELLIGENCE VIRTUAL ASSISTANT:::"<<endl;
+            cout<<endl;
             fl=fopen("C:/Users/kkaym/OneDrive/Desktop/Codeblocks Projects/AIVA pro/Data Management/QnA Data Logic (txt)/logic_data.txt", "rb");//Open and read File
             if(fl)
             {
-                while(fread(&obj, sizeof(obj), 1, fl))
+                while(fread(&obj_logic, sizeof(obj_logic), 1, fl))
                 {
-                    temp = obj.counter;
+                    system("CLS");
+                    cout<<" --KNOW it ALL DEEP LEARNING SERVICE                                       Total Questions in Database: "<<obj_logic.counter<<endl;
+                    temp = obj_logic.counter;
                 }
                 fclose(fl);//Close File
             }
@@ -883,43 +1177,63 @@ public:
             {
                 error_message();
             }
-            cout<<"Processing Speech Query..............\n"<<endl;
-            a.type_n_speak_func(" --OOPS!!!... THAT IS NOT IN MY KNOWLEDGE. PLEASE ENTER THE ANSWER FOR YOUR QUESTION IN ORDER TO MAKE ME BETTER");
+            cout<<endl;
+            a.type_n_speak_func("ASK ME ANYTHING, YOU WANT TO KNOW? Start by typing aiva first.");
             cout<<"\n"<<endl;
+            cout<<"                                 Start by typing aiva first."<<endl;
+            cout<<"\n"<<endl;
+            cout<<"  ____________________________________________________________________________________________________________"<<endl;
+            cout<<"     ";
             cin>>f_word;
-            getline(cin, text_answer);
-            text_answer = f_word + text_answer;
-            stringstream ss;
-            ss << obj.j;
-            str = ss.str();
-            filename = filename + str + xlsx;
-            ofstream myExcelFile;
-            myExcelFile.open(filename);//open and write xlsx data file
-            myExcelFile << obj.j << ", " << text_question << ", " << text_answer <<endl;// Send data to the stream
-            myExcelFile.close();// Close the file
-            filename = "";
-            fl=fopen("C:/Users/kkaym/OneDrive/Desktop/Codeblocks Projects/AIVA pro/Data Management/QnA Data Logic (txt)/logic_data.txt", "ab");//Open and write File
-            if(fl)
+            getline(cin, text_question);
+            cout<<"  _____________________________________________________________________________________________________________"<<endl;
+            cout<<"\n\n"<<endl;
+            if(temp >= 1)
             {
-                obj.j++;
-                fflush(stdin);
-                obj.counter = obj.j;
-                fflush(stdin);
-                fwrite(&obj, sizeof(obj), 1, fl);//Close File
-                fclose(fl);
+                logic = obj_response.outputQnA(content, row, text_question);//Output Result From Excel File
             }
-            else
+            if(logic == 0)
             {
-                error_message();
+                cout<<"Processing Speech Query..............\n"<<endl;
+                a.type_n_speak_func(" --OOPS!!!... THAT IS NOT IN MY KNOWLEDGE. PLEASE ENTER THE ANSWER FOR YOUR QUESTION IN ORDER TO MAKE ME BETTER");
+                cout<<"\n"<<endl;
+                cin>>f_word;
+                getline(cin, text_answer);
+                text_answer = f_word + text_answer;
+                if(temp >= 1)
+                {
+                    obj_questions.copiedQuestions(text_question, content, row, temp);
+                    obj_answers.copiedAnswers(text_answer, content, row, temp);
+                    obj_QnA.copiedQnA(content, row, temp);
+                    obj_QnA.storedQnA(text_question, text_answer, temp);
+                    obj_questions.storedQuestions(text_question, temp);
+                    obj_answers.storedAnswers(text_answer, temp);
+                }
+                else
+                {
+                    obj_QnA.storedCurrentQnA(text_question, text_answer, temp);
+                    obj_questions.storedCurrentQuestion(text_question);
+                    obj_answers.storedCurrentAnswer(text_answer);
+                }
+                fl=fopen("C:/Users/kkaym/OneDrive/Desktop/Codeblocks Projects/AIVA pro/Data Management/QnA Data Logic (txt)/logic_data.txt", "ab");//Open and write File
+                if(fl)
+                {
+                    obj_logic.counter++;
+                    fflush(stdin);
+                    fwrite(&obj_logic, sizeof(obj_logic), 1, fl);//Close File
+                    fclose(fl);
+                }
+                else
+                {
+                    error_message();
+                }
             }
-        }
-        Sleep(2000);
-        cout<<"Processing Results..............\n"<<endl;
-        a.type_n_speak_func(" THANK YOU!!!!!");
-        cout<<"\n"<<endl;
-        system("PAUSE");
-        system("CLS");
-    }while(text_question != " exit");
+            cout<<"Processing Results..............\n"<<endl;
+            a.type_n_speak_func(" THANK YOU!!!!!");
+            cout<<"\n"<<endl;
+            system("PAUSE");
+            system("CLS");
+        }while(text_question != " exit");
     }
     void error_message()
     {
@@ -946,71 +1260,133 @@ public:
         fclose(fk);
         return;
     }
-    ~app()
+    ~aiva_ask_me_anything()
     {
-        for(int i = 0; i < obj.counter; i++)
+    }
+};
+class aiva_menu{
+private:
+    aiva_safe_city_identifier obj;
+    aiva_online_search obj1;
+    aiva_ask_me_anything obj2;
+    char option;
+public:
+    aiva_menu()
+    {
+
+    }
+    void display()
+    {
+        do
         {
-            delete obj1[i].ptr_q1;
-            delete obj1[i].ptr_a1;
-        }
+            system("CLS");
+            system("color b");//color font
+            cout<<" --SOUTH AFRICAN GOVERNMENT PERSONAL ARTIFICIAL INTELLIGENCE VIRTUAL ASSISTANT:::"<<endl;
+            cout<<endl;
+            cout<<" --SOUTH AFRICA'S TOP UNSAFE CITY'S INTELLIGENCE LOCATOR:::"<<endl;
+            cout<<"\n"<<endl;
+            cout<<"  1 - IDENTIFY IF YOUR CITY IS UNSAFE IN SOUTH AFRICA.\n"<<endl;;
+            cout<<"  2 - SHOW TOP UNSAFE CITY'S IN SOUTH AFRICA.\n"<<endl;
+            cout<<"  3 - SEARCH ONLINE.\n"<<endl;
+            cout<<"  4 - ASK AIVA ANYTHING. (DEEP LEARNING)\n"<<endl;
+            a.speak_func("ENTER OPTION NUMBER BELOW");
+            cout<<" -------ENTER OPTION # HERE------                                           PRESS 9 TO EXIT\n"<<endl;
+            cin>>option;
+            cout<<"\n"<<endl;
+            switch(option)
+            {
+            case '1':
+                system("CLS");
+                obj.survey();//input survey
+                break;
+            case '2':
+                system("CLS");
+                obj.show_citys();//show top poor cities in order
+                break;
+            case '3':
+                system("CLS");
+                obj1.online_search();//search the web
+                break;
+            case '4':
+                system("CLS");
+                obj2.ask();//get knowledge or store knowledge
+                break;
+            case '9':
+                system("PAUSE");
+                system("CLS");
+                exit(1);//exit function
+                break;
+            default:
+                a.type_n_speak_func("SORRY. PLEASE ENTER CORRECT OPTION NUMBER.");
+                cout<<"\n\n"<<endl;
+                break;
+            }
+        }while(option != '9');
+    }
+    ~aiva_menu()
+    {
+
+    }
+};
+class aiva_security{
+private:
+    string text_username, text_password;
+    struct users
+    {
+        string username, password;
+    };
+    struct users rec[1000];
+public:
+    aiva_security()
+    {
+        rec[0].username = "KKAY.MUDAU";
+        rec[0].password = "OHLord.01";
+        cout<<"\n\n\n"<<endl;
+        system("color f");
+        cout<<"\t\t\t <<<<<<<<<<<<<<<<             WELCOME   TO   BLACKKARMAHOLYSPIRIT   Inc.              >>>>>>>>>>>>>>>\n\n"<<endl;
+        Sleep(3000);
+        /*do
+        {
+            system("CLS");
+            system("color e");//color font
+            cout<<"\n\n\n\n"<<endl;
+            cout<<"\t\t\t\t\t\t\t <<<<<< --LOGIN DETAILS-- >>>>>>"<<endl;
+            cout<<"\n\t\t\t\t\t\t ENTER USERNAME: ";
+            cin>>text_username;
+            cout<<endl;
+            cout<<"\n\t\t\t\t\t\t ENTER PASSWORD: ";
+            cin>>text_password;
+            cout<<endl;
+            for(int i=0; i<1000; i++)
+            {
+                if(text_username == rec[i].username && text_password == rec[i].password)
+                    break;
+            }
+        }while(text_username != rec[i].username && text_password != rec[i].password );*/
+        system("CLS");
+    }
+    void welcome_message()
+    {
+        system("color b");
+        cout<<"\n\n\n\n\n\n\t\t\t <<<<<<<<<<<<<<                     ...SUCCESSFUL LOGIN...                      >>>>>>>>>>>>>>>\n\n"<<endl;
+        Sleep(3000);
+        system("CLS");
+        system("color 6");
+        a.welcome_msg();//call welcome function from assistant class
+        cout<<"\n\n\n\n\n\n\t\t\t <<<<<<<<<<<<<<            ...STARTING   APPLICATION   PLEASE WAIT...           >>>>>>>>>>>>>>>\n\n"<<endl;
+        Sleep(3000);
+    }
+    ~aiva_security()
+    {
+        cout<<""<<endl;
     }
 };
 int main()
 {
-    app obj;//declare class object
-    char option;
-    system("color b");
-    cout<<"\n\n\n\n\n\n\t\t\t <<<<<<<<<<<<<<                     ...SUCCESSFUL LOGIN...                      >>>>>>>>>>>>>>>\n\n"<<endl;
-    Sleep(3000);
-    system("CLS");
-    system("color 6");
-    a.welcome_msg();//call welcome function from assistant class
-    cout<<"\n\n\n\n\n\n\t\t\t <<<<<<<<<<<<<<            ...STARTING   APPLICATION   PLEASE WAIT...           >>>>>>>>>>>>>>>\n\n"<<endl;
-    Sleep(3000);
-    do
-    {
-        system("CLS");
-        system("color b");//color font
-        cout<<" --SOUTH AFRICAN GOVERNMENT PERSONAL ARTIFICIAL INTELLIGENCE VIRTUAL ASSISTANT:::"<<endl;
-        cout<<endl;
-        cout<<" --SOUTH AFRICA'S TOP UNSAFE CITY'S INTELLIGENCE LOCATOR:::"<<endl;
-        cout<<"\n"<<endl;
-        cout<<"  1 - IDENTIFY IF YOUR CITY IS UNSAFE IN SOUTH AFRICA.\n"<<endl;;
-        cout<<"  2 - SHOW TOP UNSAFE CITY'S IN SOUTH AFRICA.\n"<<endl;
-        cout<<"  3 - SEARCH ONLINE.\n"<<endl;
-        cout<<"  4 - ASK AIVA ANYTHING. (DEEP LEARNING)\n"<<endl;
-        a.speak_func("ENTER OPTION NUMBER BELOW");
-        cout<<" -------ENTER OPTION # HERE------                                           PRESS 9 TO EXIT\n"<<endl;
-        cin>>option;
-        cout<<"\n"<<endl;
-        switch(option)
-        {
-        case '1':
-            system("CLS");
-            obj.survey();//input survey
-            break;
-        case '2':
-            system("CLS");
-            obj.show_citys();//show top poor cities in order
-            break;
-        case '3':
-            system("CLS");
-            obj.online_search();//search the web
-            break;
-        case '4':
-            system("CLS");
-            obj.ask();//get knowledge or store knowledge
-            break;
-        case '9':
-            system("PAUSE");
-            system("CLS");
-            exit(1);//exit function
-            break;
-        default:
-            a.type_n_speak_func("SORRY. PLEASE ENTER CORRECT OPTION NUMBER.");
-            cout<<"\n\n"<<endl;
-            break;
-        }
-    }while(option != '9');
+    aiva_security obj;
+    aiva_menu obj1;
+
+    obj.welcome_message();
+    obj1.display();
     return 0;
 }
